@@ -1,0 +1,16 @@
+SELECT medicamento FROM farmacia;
+SELECT MIN(idade) FROM usuarios;
+SELECT MAX(idade) FROM usuarios;
+SELECT ROUND(AVG(idade)) FROM usuarios WHERE idade >= 18;
+SELECT categoria, COUNT(*), SUM(estoque) FROM farmacia GROUP BY categoria LIMIT 2;
+SELECT categoria, COUNT(*), SUM(estoque) FROM farmacia WHERE categoria IS NOT NULL GROUP BY categoria;
+SELECT categoria, COUNT(*), SUM(estoque) FROM farmacia WHERE categoria IS NULL GROUP BY categoria;
+SELECT COUNT(medicamento) FROM farmacia WHERE categoria IS NULL;
+SELECT CONCAT(medicamento,' ( ', categoria, ' ) ') FROM farmacia WHERE categoria IS NOT NULL;
+SELECT CONCAT( id,' - ', medicamento, ' ( ', COALESCE(categoria, 'sem categoria'), ' ) ') FROM farmacia;
+SELECT nome, idade, CAST(cadastro AS date) FROM usuarios WHERE cadastro BETWEEN '2020-01-01' AND '2020-12-31';
+SELECT nome, idade, email, AGE(CAST(cadastro AS timestamp)) FROM usuarios WHERE idade < 18;
+SELECT nome, idade, email, AGE(CAST(cadastro AS date)) FROM usuarios WHERE idade >= 60;
+SELECT COUNT(categoria) FROM farmacia WHERE categoria IS NOT NULL;
+SELECT idade, COUNT(*) FROM usuarios WHERE idade >= 18 GROUP BY idade;
+SELECT categoria, COUNT(*) FROM farmacia WHERE categoria IS NOT NULL GROUP BY categoria LIMIT 3;
